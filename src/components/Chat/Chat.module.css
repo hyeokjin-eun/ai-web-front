@@ -8,12 +8,17 @@
   font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
   background: #1a1a1a;
   color: #e0e0e0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for modern browsers */
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  position: relative;
 }
 
 /* Header */
@@ -155,6 +160,9 @@
   flex: 1;
   overflow-y: auto;
   padding: 8px;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
 }
 
 .chatItem {
@@ -195,6 +203,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
 }
 
 .message {
@@ -270,6 +281,7 @@
   min-height: 44px;
   max-height: 200px;
   line-height: 1.5;
+  touch-action: manipulation;
 }
 
 .inputField:focus {
