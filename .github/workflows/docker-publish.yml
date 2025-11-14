@@ -14,7 +14,7 @@ on:
   workflow_dispatch:
 
 env:
-  DOCKER_IMAGE_NAME: ai-web-front
+  DOCKER_IMAGE_NAME: github-action-test
 
 jobs:
   build-and-push:

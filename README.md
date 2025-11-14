@@ -113,21 +113,21 @@ docker rm ai-web-front
 
 ```bash
 # 이미지 Pull
-docker pull <username>/ai-web-front:latest
+docker pull gurwls2399/github-action-test:latest
 
 # 실행
-docker run -d -p 8080:80 <username>/ai-web-front:latest
+docker run -d -p 8080:80 gurwls2399/github-action-test:latest
 ```
 
 ### GitHub Actions를 통한 자동 배포
 
-이 프로젝트는 GitHub Actions를 사용하여 Docker Hub에 자동으로 이미지를 푸시합니다.
+이 프로젝트는 GitHub Actions를 사용하여 Docker Hub의 `gurwls2399/github-action-test` 저장소에 자동으로 이미지를 푸시합니다.
 
 #### 사전 준비
 
 GitHub Repository의 Settings > Secrets and variables > Actions에서 다음 시크릿을 추가하세요:
 
-- `DOCKER_USERNAME`: Docker Hub 사용자명
+- `DOCKER_USERNAME`: Docker Hub 사용자명 (gurwls2399)
 - `DOCKER_PASSWORD`: Docker Hub 액세스 토큰 또는 비밀번호
 
 #### 트리거 조건
@@ -140,9 +140,11 @@ GitHub Repository의 Settings > Secrets and variables > Actions에서 다음 시
 #### 이미지 태그
 
 - `latest`: main 브랜치의 최신 커밋
-- `develop`: develop 브랜치의 최신 커밋
+- `main`: main 브랜치
+- `develop`: develop 브랜치
 - `v1.0.0`, `v1.0`, `v1`: 버전 태그
-- `main-abc1234`, `develop-abc1234`: 브랜치명-커밋 SHA
+- `sha-abc1234`: 커밋 SHA
+- `pr-123`: Pull Request 번호
 
 ## 개발 가이드
 
