@@ -71,6 +71,79 @@ ai-web-front/
 └── vite.config.js
 ```
 
+## Docker
+
+### Docker로 빌드 및 실행
+
+#### Docker Compose 사용 (권장)
+
+```bash
+# 빌드 및 실행
+docker-compose up --build
+
+# 백그라운드 실행
+docker-compose up -d
+
+# 중지
+docker-compose down
+```
+
+애플리케이션은 `http://localhost:8080`에서 실행됩니다.
+
+#### Docker 직접 사용
+
+```bash
+# 이미지 빌드
+docker build -t ai-web-front .
+
+# 컨테이너 실행
+docker run -d -p 8080:80 --name ai-web-front ai-web-front
+
+# 로그 확인
+docker logs ai-web-front
+
+# 컨테이너 중지
+docker stop ai-web-front
+
+# 컨테이너 삭제
+docker rm ai-web-front
+```
+
+### Docker Hub에서 이미지 가져오기
+
+```bash
+# 이미지 Pull
+docker pull <username>/ai-web-front:latest
+
+# 실행
+docker run -d -p 8080:80 <username>/ai-web-front:latest
+```
+
+### GitHub Actions를 통한 자동 배포
+
+이 프로젝트는 GitHub Actions를 사용하여 Docker Hub에 자동으로 이미지를 푸시합니다.
+
+#### 사전 준비
+
+GitHub Repository의 Settings > Secrets and variables > Actions에서 다음 시크릿을 추가하세요:
+
+- `DOCKER_USERNAME`: Docker Hub 사용자명
+- `DOCKER_PASSWORD`: Docker Hub 액세스 토큰 또는 비밀번호
+
+#### 트리거 조건
+
+- `main` 또는 `develop` 브랜치에 push할 때
+- `v*` 태그를 push할 때
+- Pull Request가 생성되거나 업데이트될 때 (빌드만 수행, 푸시 안함)
+- 수동 실행 (workflow_dispatch)
+
+#### 이미지 태그
+
+- `latest`: main 브랜치의 최신 커밋
+- `develop`: develop 브랜치의 최신 커밋
+- `v1.0.0`, `v1.0`, `v1`: 버전 태그
+- `main-abc1234`, `develop-abc1234`: 브랜치명-커밋 SHA
+
 ## 개발 가이드
 
 이 프로젝트는 다음 코딩 규칙을 따릅니다:
