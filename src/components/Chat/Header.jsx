@@ -7,7 +7,7 @@ function Header({ onMenuToggle }) {
         <button className={styles.menuToggle} onClick={onMenuToggle}>
           ☰
         </button>
-        <div className={styles.logo}>⚡ Claude Code</div>
+        <div className={styles.logo}>⚡ Comet</div>
         <div className={styles.status}>
           <div className={styles.statusDot}></div>
           <span>Connected</span>
