@@ -1,22 +1,15 @@
 import { useState } from 'react'
-import './styles/App.css'
+import Login from './components/Login/Login'
+import Chat from './components/Chat/Chat'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
-  return (
-    <div className="app">
-      <header className="app-header">
-        <h1>AI Web Front</h1>
-        <p>React + Vite 프로젝트가 성공적으로 설정되었습니다!</p>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
-        </div>
-      </header>
-    </div>
-  )
+  const handleLogin = () => {
+    setIsLoggedIn(true)
+  }
+
+  return isLoggedIn ? <Chat /> : <Login onLogin={handleLogin} />
 }
 
 export default App
